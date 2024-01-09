@@ -1,0 +1,47 @@
+  <body>   
+    <h1 class="one"><b>ANGULAR <br> &nbsp; FORM</b></h1>
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+      <h2>&nbsp; REGISTRATION FORM</h2>
+
+      <!-- First Name field -->
+
+      <label for="name">First Name:</label>
+      <input type="text" id="firstname" name="firstname" formControlName="firstname">
+      <span *ngIf="reactiveForm.get('firstname').errors && reactiveForm.get('firstname').hasError('required') && reactiveForm.get('firstname').touched  && reactiveForm.get('firstname').untouched ">*This field cannot be empty.</span>
+      <span *ngIf="reactiveForm.get('firstname').errors && reactiveForm.get('firstname').hasError('pattern') ">*First Name is Invalid.</span>
+      
+      <!-- Last Name Field -->
+
+      <label for="name">Last Name:</label>
+      <input type="text" id="lastname" name="lastname" formControlName="lastname">
+      <span *ngIf="reactiveForm.get('lastname').errors && reactiveForm.get('lastname').hasError('required') && reactiveForm.get('lastname').touched  && reactiveForm.get('lastname').untouched">*This field cannot be empty.</span>
+      <span *ngIf="reactiveForm.get('lastname').errors && reactiveForm.get('lastname').hasError('pattern') ">*Last Name is Invalid.</span>
+
+      <!-- Email Field -->
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" formControlName="email">
+      <span *ngIf="reactiveForm.get('email').invalid"> *Not a valid email.</span>
+
+      <!-- Country Field -->
+
+      <label for="country">Country:</label>
+      <input type="country" id="country" name="country" formControlName="country">
+
+      <!-- Gender Field -->
+
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" formControlName="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <!-- Button Field -->
+
+      <button type="submit" [disabled]="reactiveForm.invalid">Submit</button>
+      
+    </form>    
+  </body>
+
+  <!-- In this, it was showing warnings when we can use [(Ngmodel)] while adding Two Way Binding in Reactive Forms. -->
